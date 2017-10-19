@@ -1,50 +1,45 @@
 import React, { Component } from "react"
-import { Navbar, NavItem, Icon } from "react-materialize"
 import FacilityList from "./FacilityList"
+import Navbar from "./Navbar"
+import AddFacility from "./AddFacility"
 import "./App.css"
+import { Route, Switch } from "react-router-dom"
 
 class App extends Component {
     constructor() {
         super()
         this.state = {
-            title: "Master Health Facility Reigster Malawi",
-            facilities: [
-                {
-                    name: "Alice HC",
-                    district: "Blantyre",
-                    email: "amsusukwa@yahoo.com",
-                    phone: "01 3241243",
-                    dateOpened: "18 July 2010",
-                    ownership: "Private"
-                },
-                {
-                    name: "Maxwell & Co",
-                    district: "Blantyre",
-                    email: "maxmillian@gmail.com",
-                    phone: "01 123456",
-                    dateOpened: "21 Aug 2007",
-                    ownership: "Public"
-                }
-            ]
+            title: "Master Health Facility Reigster Malawi"
         }
     }
 
     render() {
         return (
             <div>
-                <Navbar
-                    style={{ padding: "0px 10px" }}
-                    right
-                    className="green darken-4"
-                    brand="MFL"
-                >
-                    <NavItem>HOME</NavItem>
-                    <NavItem>ABOUT</NavItem>
-                    <NavItem className="active">FACILITIES</NavItem>
-                    <NavItem>FEEDBACK</NavItem>
-                    <NavItem>HELP</NavItem>
-                </Navbar>
-                <FacilityList facilities={this.state.facilities} />
+                <Navbar />
+                <div className="container">
+                    <Switch>
+                        <Route
+                            path="/home"
+                            render={() => <div>This is Home</div>}
+                        />
+                        <Route
+                            exact
+                            path="/facilities"
+                            component={FacilityList}
+                        />
+                        <Route
+                            exact
+                            path="/facilities/add"
+                            component={AddFacility}
+                        />
+                        <Route
+                            exact
+                            path="/"
+                            render={() => <div>This is Dashboard</div>}
+                        />
+                    </Switch>
+                </div>
             </div>
         )
     }
