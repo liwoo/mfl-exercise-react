@@ -1,7 +1,7 @@
 import React, { Component } from "react"
-import FacilityList from "./FacilityList"
+import FacilityList from "../facilities/FacilityList"
 import Navbar from "./Navbar"
-import AddFacility from "./AddFacility"
+import AddFacility from "../facilities/AddFacility"
 import "./App.css"
 import { Route, Switch } from "react-router-dom"
 
